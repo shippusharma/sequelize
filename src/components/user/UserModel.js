@@ -1,29 +1,28 @@
 'use strict';
-import { DataTypes } from 'sequelize';
-import { db } from '../../server';
 
-const UserModel = db.define(
-  'user',
-  {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      default: 'Shippu',
+export default (sequelize, Sequelize) => {
+  return sequelize.define(
+    'user',
+    {
+      firstName: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        default: 'Shippu',
+      },
+      lastName: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        default: 'Sharma',
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        default: 'Hello',
+      },
     },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      default: 'Sharma',
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      default: 'Hello',
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-export default UserModel;
+    {
+      freezeTableName: true,
+      timestamps: true,
+    }
+  );
+};
