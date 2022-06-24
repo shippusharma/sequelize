@@ -43,7 +43,7 @@ class GlobalFunctions {
 
   GenerateJWTToken(object) {
     try {
-      const token = jwt.sign({ _id: object._id }, process.env.TOKEN_KEY, { expiresIn: '24h' });
+      const token = jwt.sign({ id: object.id }, process.env.TOKEN_KEY, { expiresIn: '24h' });
       return token;
     } catch (error) {
       return new Error(error.message);
@@ -60,6 +60,11 @@ class GlobalFunctions {
   RandomNumber(range) {
     return Math.floor(Math.random() * range);
   }
+
+  FindArrayIndexValue = (arr, item) => {
+    const index = arr.indexOf(item);
+    return index !== -1 && arr.splice(index, 1);
+  };
 
   GetUserName(st) {
     const str = st.split('@');
