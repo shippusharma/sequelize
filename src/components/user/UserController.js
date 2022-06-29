@@ -2,6 +2,21 @@
 import db from '../../model/index';
 
 export default {
+  multipleNewUsers: async (req, res) => {
+    const arr = [
+      { firstName: 'A', lastName: 'A', description: 'A' },
+      { firstName: 'B', lastName: 'B', description: 'B' },
+      { firstName: 'C', lastName: 'C', description: 'C' },
+    ];
+    try {
+      const newUser = await db.user.bulkCreate(arr);
+
+      return res.status(200).json({ message: 'Multiple Users Created Successfully...!', payload: newUser });
+    } catch (error) {
+      return new Error(error.message);
+    }
+  },
+
   createNewUser: async (req, res) => {
     const { firstName, lastName, description } = req.body;
 

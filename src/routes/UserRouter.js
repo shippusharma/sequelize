@@ -4,6 +4,8 @@ import UserController from '../components/user/UserController';
 
 const router = express.Router();
 
+router.post('/multiple', UserController.multipleNewUsers);
+
 router.post('/create', UserController.createNewUser);
 
 router.get('/all', UserController.getAllUser);
