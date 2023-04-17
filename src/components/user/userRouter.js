@@ -2,17 +2,17 @@
 import * as userController from './userController';
 
 export function userRouter(router) {
-  router.get('/greeting', userController.greeting);
+  router.get('/user/greeting', userController.greeting);
 
-  router.post('/multiple', userController.multipleNewUsers);
+  router.post('/user/multiple', userController.multipleNewUsers);
 
-  router.post('/create', userController.createNewUser);
+  router.post('/user/create', userController.createNewUser);
 
-  router.get('/all', userController.getAllUser);
+  router.get('/users', userController.getAllUser);
 
-  router.get('/:id', userController.getUser);
+  router.get('/user:id', userController.getUser);
 
-  router.put('/:id', userController.updateUser);
+  router.put('/user:id', userController.updateUser);
 
-  router.delete('/:id', userController.deleteUser);
+  router.delete('/user:id', userController.deleteUser);
 }

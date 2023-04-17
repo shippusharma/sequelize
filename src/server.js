@@ -24,6 +24,8 @@ app.get('/', (req, res) => {
 (async () => {
   await MySQL_Database(); // database connection
 
+  // await MongoDB_Database(); // database connection
+
   app.use('/api', router); // all api routes
 
   app.listen(port, (error) => {

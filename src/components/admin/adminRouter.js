@@ -2,13 +2,13 @@
 import * as adminController from './adminController';
 
 export function adminRouter(router) {
-  router.post('/create', adminController.createNewAdmin);
+  router.post('/admin/create', adminController.createNewAdmin);
 
-  router.get('/all', adminController.getAllAdmin);
+  router.get('/admins', adminController.getAllAdmin);
 
-  router.get('/:id', adminController.getAdmin);
+  router.get('/admin:id', adminController.getAdmin);
 
-  router.put('/:id', adminController.updateAdmin);
+  router.put('/admin:id', adminController.updateAdmin);
 
-  router.delete('/:id', adminController.deleteAdmin);
+  router.delete('/admin:id', adminController.deleteAdmin);
 }
