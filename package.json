@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
-    "clean": "rm -rf build",
-    "build": "yarn run clean && babel src -d build",
+    "build": "rm -rf build && babel src -d build",
     "start": "node build/server.js"
   },
   "keywords": [],
@@ -30,6 +29,7 @@
     "@babel/core": "^7.17.5",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
+    "babel-plugin-module-resolver": "^5.0.0",
     "nodemon": "^2.0.15"
   }
 }

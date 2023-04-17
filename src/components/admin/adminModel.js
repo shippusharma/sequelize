@@ -1,8 +1,8 @@
 'use strict';
 
-export default (sequelize, Sequelize) => {
+export const adminModel = (sequelize, Sequelize) => {
   return sequelize.define(
-    'user',
+    'admin',
     {
       firstName: {
         type: Sequelize.STRING,
@@ -17,7 +17,7 @@ export default (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING,
         allowNull: true,
-        default: 'Hello',
+        default: 'Hello from Admin',
       },
     },
     {
