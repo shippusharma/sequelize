@@ -1,5 +1,5 @@
 'use strict';
-import { userModel } from './userModel';
+import { UserModel } from '@/model';
 
 export const greeting = (req, res) => {
   return res.status(200).json({ message: 'Greeting From User!!' });
@@ -12,7 +12,7 @@ export const multipleNewUsers = async (req, res) => {
     { firstName: 'C', lastName: 'C', description: 'C' },
   ];
   try {
-    const newUser = await userModel.bulkCreate(arr);
+    const newUser = await UserModel.bulkCreate(arr);
 
     return res.status(200).json({ message: 'Multiple Users Created Successfully...!', payload: newUser });
   } catch (error) {
@@ -25,7 +25,7 @@ export const createNewUser = async (req, res) => {
 
   if (!firstName || !lastName) return res.status(400).send('please, give the required Data');
   try {
-    const newUser = await userModel.create({ firstName, lastName, description });
+    const newUser = await UserModel.create({ firstName, lastName, description });
 
     return res.status(200).json({ message: 'User Created Successfully...!', payload: newUser });
   } catch (error) {
@@ -35,7 +35,7 @@ export const createNewUser = async (req, res) => {
 
 export const getAllUser = async (req, res) => {
   try {
-    const users = await userModel.findAll();
+    const users = await UserModel.findAll();
 
     return res.status(200).json({ message: 'users data', payload: users });
   } catch (error) {
@@ -47,7 +47,7 @@ export const getUser = async (req, res) => {
   const { id } = req.params;
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await userModel.findOne({
+    const getUser = await UserModel.findOne({
       where: { id },
     });
 
@@ -63,7 +63,7 @@ export const updateUser = async (req, res) => {
 
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await userModel.update(
+    const getUser = await UserModel.update(
       { firstName, lastName, description },
       {
         where: { id },
@@ -80,7 +80,7 @@ export const deleteUser = async (req, res) => {
   const { id } = req.params;
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await userModel.destroy({
+    const getUser = await UserModel.destroy({
       where: { id },
     });
 

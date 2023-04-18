@@ -21,9 +21,7 @@ export async function MySQL_Database() {
   try {
     await sequelize.authenticate();
     console.log(':>) Connection has been established successfully....!');
-    // all models
-    userModel(sequelize, Sequelize);
-    adminModel(sequelize, Sequelize);
+
     // sync all models
     await sequelize.sync({ force: false });
     console.log('All models were synchronized successfully.');
@@ -32,10 +30,6 @@ export async function MySQL_Database() {
   }
 }
 
-export async function MongoDB_Database() {
-  try {
-    // for mongodb
-  } catch (error) {
-    return console.error('Unable to connect to the database:', error.message);
-  }
-}
+// all models of MySQL
+export const UserModel = userModel(sequelize, Sequelize);
+export const AdminModel = adminModel(sequelize, Sequelize);

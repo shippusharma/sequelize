@@ -1,12 +1,12 @@
 'use strict';
-import { adminModel } from './adminModel';
+import { AdminModel } from '@/model';
 
 export const createNewAdmin = async (req, res) => {
   const { firstName, lastName, description } = req.body;
 
   if (!firstName || !lastName) return res.status(400).send('please, give the required Data');
   try {
-    const newUser = await adminModel.create({ firstName, lastName, description });
+    const newUser = await AdminModel.create({ firstName, lastName, description });
 
     return res.status(200).json({ message: 'Admin Registered', payload: newUser });
   } catch (error) {
@@ -16,7 +16,7 @@ export const createNewAdmin = async (req, res) => {
 
 export const getAllAdmin = async (req, res) => {
   try {
-    const users = await adminModel.findAll();
+    const users = await AdminModel.findAll();
 
     return res.status(200).json({ message: 'Admina Data', payload: users });
   } catch (error) {
@@ -28,7 +28,7 @@ export const getAdmin = async (req, res) => {
   const { id } = req.params;
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await adminModel.findOne({
+    const getUser = await AdminModel.findOne({
       where: { id },
     });
 
@@ -44,7 +44,7 @@ export const updateAdmin = async (req, res) => {
 
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await adminModel.update(
+    const getUser = await AdminModel.update(
       { firstName, lastName, description },
       {
         where: { id },
@@ -61,7 +61,7 @@ export const deleteAdmin = async (req, res) => {
   const { id } = req.params;
   if (!id) return res.status(400).send('Invalid Credential');
   try {
-    const getUser = await adminModel.destroy({
+    const getUser = await AdminModel.destroy({
       where: { id },
     });
 
