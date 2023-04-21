@@ -1,10 +1,11 @@
 import express from 'express';
-import { adminRouter, userRouter } from '@/components';
+import { adminRouter, bookRouter, userRouter } from '@/components';
 
 export const router = express.Router();
 
-userRouter(router); // all user routes
 adminRouter(router); // all admin routes
+userRouter(router); // all user routes
+bookRouter(router);
 
 router.use('*', (req, res) => {
   return res.status(404).json({

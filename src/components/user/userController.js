@@ -1,5 +1,5 @@
 'use strict';
-import { UserModel } from '@/model';
+import { BookModel, UserModel } from '@/model';
 
 export const greeting = (req, res) => {
   return res.status(200).json({ message: 'Greeting From User!!' });
@@ -35,7 +35,13 @@ export const createNewUser = async (req, res) => {
 
 export const getAllUser = async (req, res) => {
   try {
-    const users = await UserModel.findAll();
+    const users = await UserModel.findAll({
+      include: [
+        {
+          model: BookModel,
+        },
+      ],
+    });
 
     return res.status(200).json({ message: 'users data', payload: users });
   } catch (error) {

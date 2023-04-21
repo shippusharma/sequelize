@@ -1,7 +1,7 @@
 'use strict';
 import 'dotenv/config';
 import Sequelize from 'sequelize';
-import { userModel, adminModel } from '@/components';
+import { userModel, adminModel, bookModel } from '@/components';
 
 const { MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_HOST } = process.env;
 
@@ -31,5 +31,9 @@ export async function MySQL_Database() {
 }
 
 // all models of MySQL
-export const UserModel = userModel(sequelize, Sequelize);
 export const AdminModel = adminModel(sequelize, Sequelize);
+export const UserModel = userModel(sequelize, Sequelize);
+export const BookModel = bookModel(sequelize, Sequelize);
+
+BookModel.belongsTo(UserModel, { foreignKey: 'userId', sourceKey: 'id' });
+UserModel.hasMany(BookModel, { foreignKey: 'userId', sourceKey: 'id' }); // foreignKey--> refering 'userId' od user, sourceKey-> id of user

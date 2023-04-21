@@ -6,17 +6,17 @@ export const userModel = (sequelize, Sequelize) => {
     {
       firstName: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
         default: 'Shippu',
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
         default: 'Sharma',
       },
       description: {
-        type: Sequelize.STRING,
-        allowNull: true,
+        type: Sequelize.TEXT,
+        allowNull: false,
         default: 'Hello',
       },
     },
